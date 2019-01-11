@@ -107,16 +107,16 @@ public class Monopoly {
     public static void movement(int roll, Player player) {
 
         //Psuedo code for animation thing. Movement animation should be based of this
-//        System.out.print(player.getName() + " is now passing " + tiles[player.getSpace()]);
-//        if (player.getSpace() < 10) {
-//            System.out.println(" horizontally left");
-//        } else if (player.getSpace() < 20) {
-//            System.out.println(" vertically up");
-//        } else if (player.getSpace() < 30) {
-//            System.out.println(" horizontally right");
-//        } else if (player.getSpace() < 40) {
-//            System.out.println(" vertically down");
-//        }
+        System.out.println(player.getName() + " is now passing " + tiles[player.getSpace()]);
+        if (player.getSpace() < 10) {
+            System.out.println(" horizontally left");
+        } else if (player.getSpace() < 20) {
+            System.out.println(" vertically up");
+        } else if (player.getSpace() < 30) {
+            System.out.println(" horizontally right");
+        } else if (player.getSpace() < 40) {
+            System.out.println(" vertically down");
+        }
         player.move();
         roll--;
         if (roll > 0) {
