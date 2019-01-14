@@ -1,4 +1,4 @@
-package monopolygraphics;
+package Monopoly;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -11,7 +11,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.text.*;
 
-public class MonopolyGraphics extends Application implements EventHandler{
+public class GUI extends Application implements EventHandler{
     
     Stage window;
     
@@ -82,16 +82,20 @@ public class MonopolyGraphics extends Application implements EventHandler{
         
         root.getChildren().addAll(twoPlayers, threePlayers, fourPlayers, txt1);
         
-        primaryStage.setTitle("Monopoly");
         primaryStage.setScene(numPlayersPage);
-        primaryStage.setResizable(false);
-        primaryStage.sizeToScene();
-        primaryStage.show();   
     }
     
-    public void playerCreationScene(Stage primaryStage){
-        TextField textField = new TextField("This is a Text");
-        textField.setMinWidth(180);
+    public void playerCreation(Stage primaryStage){
+        StackPane root = new StackPane();
+        
+        Scene playerCreationScene = new Scene(root, 1000, 750);
+        
+        TextField name = new TextField("This is a Text");
+        name.set;
+        
+        root.getChildren().addAll(name);
+        
+        primaryStage.setScene(playerCreationScene);
     }
     
     public static void main(String[] args) {
@@ -106,7 +110,7 @@ public class MonopolyGraphics extends Application implements EventHandler{
             System.out.println("Loading");
         }else if(event.getSource() == twoPlayers){
             for (int i = 0; i < 2; i++) {
-                System.out.println("Player " + (i+1));
+                playerCreation(window);
             }
         }else if(event.getSource() == threePlayers){
             for (int i = 0; i < 2; i++) {
