@@ -12,6 +12,8 @@ package monopoly;
 public abstract class Properties extends Tiles{
 
     public int cost;
+    public int amountOwned = 0;
+    public int owner = -1;
     
     public Properties(String name, int position, int cost) {
         super(name, position);
