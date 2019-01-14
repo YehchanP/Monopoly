@@ -17,9 +17,7 @@ public abstract class EventTiles extends Tiles{
     
    
 
-    @Override
-    void event() {
-        System.out.println("Event Tile");
-    }
+
+
     
 }

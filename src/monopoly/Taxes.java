@@ -10,8 +10,17 @@ package monopoly;
  * @author 324745561
  */
 public class Taxes extends EventTiles{
-
-    public Taxes(String name, int position) {
+    public int tax;
+    public Taxes(String name, int position, int tax) {
         super(name, position);
+        this.tax = tax;
+    }
+    
+
+
+    @Override
+    void event(Player p) {
+        System.out.println(p.getName()+" loses $"+tax+" to "+name);
+        p.loseMoney(tax);
     }
 }

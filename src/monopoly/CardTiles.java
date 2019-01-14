@@ -14,5 +14,10 @@ public class CardTiles extends EventTiles{
     public CardTiles(String name, int position) {
         super(name, position);
     }
+
+    @Override
+    void event(Player p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
