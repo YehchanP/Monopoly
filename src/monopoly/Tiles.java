@@ -18,5 +18,5 @@ public abstract class Tiles {
         this.position = position;
     }
     
-    abstract void event();
+    abstract void event(Player p);
 }

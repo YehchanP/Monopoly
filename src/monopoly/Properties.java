@@ -16,7 +16,7 @@ public abstract class Properties extends Tiles{
     }
 
     @Override
-    void event() {
+    void event(Player p) {
         System.out.println("Property");
     }
     
