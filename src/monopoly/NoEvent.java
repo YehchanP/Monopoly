@@ -9,11 +9,11 @@ package monopoly;
  *
  * @author 324745561
  */
-public class Nothing extends EventTiles{
+public class NoEvent extends Tiles{
     public String eventSaying;
     
     
-    public Nothing(String name, int position, String eventSaying) {
+    public NoEvent(String name, int position, String eventSaying) {
         super(name, position);
         this.eventSaying = eventSaying;
     }

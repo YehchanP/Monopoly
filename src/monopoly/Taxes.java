@@ -9,7 +9,7 @@ package monopoly;
  *
  * @author 324745561
  */
-public class Taxes extends EventTiles{
+public class Taxes extends Tiles{
     public int tax;
     public Taxes(String name, int position, int tax) {
         super(name, position);
