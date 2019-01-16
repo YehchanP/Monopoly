@@ -41,8 +41,6 @@ public class Player {
     public boolean isInJail() {
         return inJail;
     }
-
-    
     
     public void toJail(){
         System.out.println("Go to jail");

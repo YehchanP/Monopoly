@@ -1,5 +1,6 @@
-package Monopoly;
+package monopoly;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -12,36 +13,66 @@ import javafx.stage.Stage;
 import javafx.scene.text.*;
 
 public class GUI extends Application implements EventHandler{
+<<<<<<< HEAD
     
-    Stage window;
+    private Player temp = new Player(".","..");
     
-    private Button startBtn, loadBtn, twoPlayers, threePlayers, fourPlayers, back;
+=======
+
+>>>>>>> de59b5107b7e818aa4ef8097a3102b760487b18b
+    private Scene previousScene;
+
+    private Stage window;
+
+    private Button startBtn, loadBtn, twoPlayers, threePlayers, fourPlayers, back, playerName;
+
+    private TextField pName;
+
+    private int counter;
+<<<<<<< HEAD
+        
+    private String tempName, tempToken;
     
+    public ArrayList <Player> players = new ArrayList <Player>();
+    
+=======
+
+    //public ArrayList <Player> players = new ArrayList <Player>();
+
+>>>>>>> de59b5107b7e818aa4ef8097a3102b760487b18b
+    public ArrayList <String> test = new ArrayList <String>();
+
     @Override
     public void start(Stage primaryStage) {
         window = primaryStage;
-        
+
         StackPane root = new StackPane();
-        
+
         Scene titlePage = new Scene(root, 1000, 750);
-        
+
+        //Creates the start button
         startBtn = new Button();
         startBtn.setText("Start New Game");
         startBtn.setOnAction(this);
         startBtn.setStyle("-fx-font-size: 20px; ");
         startBtn.setTranslateX(-270);
         startBtn.setTranslateY(150);
-        
+
+        //Creates the loading button
         loadBtn = new Button();
         loadBtn.setText("Load Game");
         loadBtn.setOnAction(this);
         loadBtn.setStyle("-fx-font-size: 20px; ");
         loadBtn.setTranslateX(250);
         loadBtn.setTranslateY(150);
-        
-        root.getChildren().add(startBtn);
-        root.getChildren().add(loadBtn);
-        
+
+        //assigns previousScene a scene value for using the back button
+        previousScene = titlePage;
+
+        //Adds elements to the scene
+        root.getChildren().addAll(startBtn, loadBtn);
+
+        //Creates and displays the scene and stage
         primaryStage.setTitle("Monopoly");
         primaryStage.setScene(titlePage);
         primaryStage.setResizable(false);
@@ -49,78 +80,126 @@ public class GUI extends Application implements EventHandler{
         primaryStage.show();
     }
 
-    public void playerNumScene(Stage primaryStage){
+    //Method for creating the number of players page
+    public void numPlayersScene(Stage primaryStage){
+
+        //Declaration and initialization of variables
         Text txt1 = new Text ("Number of Players:");
-        
+
         StackPane root = new StackPane();
-        
+
         Scene numPlayersPage = new Scene(root, 1000, 750);
-        
+
+        //Customization of JText element
         txt1.setStyle("-fx-font-size: 30px; ");
         txt1.setTranslateY(-100);
-        
+
+        //Customization of JButton element
         twoPlayers = new Button();
         twoPlayers.setText("2");
         twoPlayers.setOnAction(this);
         twoPlayers.setStyle("-fx-font-size: 30px; ");
         twoPlayers.setTranslateX(-270);
         twoPlayers.setTranslateY(100);
-        
+
+        //Customization of JButton element
         threePlayers = new Button();
         threePlayers.setText("3");
         threePlayers.setOnAction(this);
         threePlayers.setStyle("-fx-font-size: 30px; ");
         threePlayers.setTranslateX(0);
         threePlayers.setTranslateY(100);
-        
+
+        //Customization of JButton element
         fourPlayers = new Button();
         fourPlayers.setText("4");
         fourPlayers.setOnAction(this);
         fourPlayers.setStyle("-fx-font-size: 30px; ");
         fourPlayers.setTranslateX(270);
         fourPlayers.setTranslateY(100);
-        
+
+        //Adds elements to the scene
         root.getChildren().addAll(twoPlayers, threePlayers, fourPlayers, txt1);
-        
+
+        //Sets new scene
         primaryStage.setScene(numPlayersPage);
     }
-    
-    public void playerCreation(Stage primaryStage){
+
+    //Method for character creation GUI
+    public void playerCreationScene(Stage primaryStage){
         StackPane root = new StackPane();
+
+        Scene playerCreationPage = new Scene(root, 1000, 750);
+
+        Text txt1 = new Text ("Player " + (counter + 1) + " Name:");
+
+        txt1.setStyle("-fx-font-size: 30px; ");
+        txt1.setTranslateY(-150);
+
+        pName = new TextField();
+        pName.setStyle("-fx-font-size: 20px; ");
+        pName.setMaxSize(400, 20);
+        pName.setTranslateY(-50);
+<<<<<<< HEAD
         
-        Scene playerCreationScene = new Scene(root, 1000, 750);
+        tempName = pName.getText();
         
-        TextField name = new TextField("This is a Text");
-        name.set;
-        
-        root.getChildren().addAll(name);
-        
-        primaryStage.setScene(playerCreationScene);
+=======
+
+>>>>>>> de59b5107b7e818aa4ef8097a3102b760487b18b
+        playerName = new Button();
+        playerName.setText("Enter");
+        playerName.setOnAction(this);
+        playerName.setStyle("-fx-font-size: 20px; ");
+        playerName.setTranslateX(270);
+        playerName.setTranslateY(-50);
+
+        root.getChildren().addAll(txt1, pName, playerName);
+
+        primaryStage.setScene(playerCreationPage);
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
-    
+
+    //Method for handling button and any events
     @Override
     public void handle(Event event) {
+        counter = 0;
         if(event.getSource() == startBtn){
-            playerNumScene(window);
+            numPlayersScene(window);
+
         }else if(event.getSource() == loadBtn){
             System.out.println("Loading");
+
         }else if(event.getSource() == twoPlayers){
-            for (int i = 0; i < 2; i++) {
-                playerCreation(window);
+            while(counter < 2) {
+                playerCreationScene(window);
+                if(event.getSource() == playerName){
+<<<<<<< HEAD
+                    Player user = new Player(tempName,"..");
+                    players.add(user);
+=======
+                    Player user = new Player(/*pName*/"filler","..");
+                    //players.add(user);
+>>>>>>> de59b5107b7e818aa4ef8097a3102b760487b18b
+                    System.out.println(counter);
+                }
+                counter++;
+                System.out.println("added");
             }
+
         }else if(event.getSource() == threePlayers){
             for (int i = 0; i < 2; i++) {
-                System.out.println("Player " + (i+1));
+                playerCreationScene(window);
             }
+
         }else if(event.getSource() == fourPlayers){
             for (int i = 0; i < 2; i++) {
-                System.out.println("Player " + (i+1));
+                playerCreationScene(window);
             }
         }
     }
-    
+
 }
