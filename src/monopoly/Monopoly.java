@@ -43,6 +43,7 @@ public class Monopoly {
             String tokenTemp = in.next();
             Player pTemp = new Player(nameTemp, tokenTemp);
             p[i] = pTemp;
+            pTemp.setName(nameTemp);
         }
 
         int currentP = 0;

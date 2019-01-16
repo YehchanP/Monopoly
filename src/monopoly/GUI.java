@@ -1,4 +1,4 @@
-package Monopoly;
+package monopoly;
 
 import java.util.ArrayList;
 import javafx.application.Application;
@@ -14,6 +14,8 @@ import javafx.scene.text.*;
 
 public class GUI extends Application implements EventHandler{
     
+    private Player temp = new Player(".","..");
+    
     private Scene previousScene;
     
     private Stage window;
@@ -24,7 +26,9 @@ public class GUI extends Application implements EventHandler{
     
     private int counter;
         
-    //public ArrayList <Player> players = new ArrayList <Player>();
+    private String tempName, tempToken;
+    
+    public ArrayList <Player> players = new ArrayList <Player>();
     
     public ArrayList <String> test = new ArrayList <String>();
     
@@ -127,6 +131,8 @@ public class GUI extends Application implements EventHandler{
         pName.setMaxSize(400, 20);
         pName.setTranslateY(-50);
         
+        tempName = pName.getText();
+        
         playerName = new Button();
         playerName.setText("Enter");
         playerName.setOnAction(this);
@@ -157,8 +163,8 @@ public class GUI extends Application implements EventHandler{
             while(counter < 2) {
                 playerCreationScene(window);
                 if(event.getSource() == playerName){
-                    Player user = new Player(pName,"..");
-                    //players.add(user);
+                    Player user = new Player(tempName,"..");
+                    players.add(user);
                     System.out.println(counter);
                 }
                 counter++;
