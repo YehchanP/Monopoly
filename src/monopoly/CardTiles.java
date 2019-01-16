@@ -9,8 +9,8 @@ package monopoly;
  *
  * @author 324745561
  */
-public class CardTiles extends EventTiles{
-
+public class CardTiles extends Tiles{
+    public String[] cards;
     public CardTiles(String name, int position) {
         super(name, position);
     }
@@ -20,4 +20,19 @@ public class CardTiles extends EventTiles{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    void collectMoney(Player p, int amount){
+        
+    }
+    
+    void loseMoney(Player p, int amount){
+        
+    }
+    
+    void move(Player p, int position){
+    
+    }
+    
+    void moveBack(Player p){
+    
+    }
 }

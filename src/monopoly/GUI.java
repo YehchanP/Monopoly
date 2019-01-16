@@ -91,7 +91,7 @@ public class GUI extends Application implements EventHandler{
         Scene playerCreationScene = new Scene(root, 1000, 750);
         
         TextField name = new TextField("This is a Text");
-        name.set;
+        //name.set;
         
         root.getChildren().addAll(name);
         
