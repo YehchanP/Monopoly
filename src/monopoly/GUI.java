@@ -157,7 +157,7 @@ public class GUI extends Application implements EventHandler{
             while(counter < 2) {
                 playerCreationScene(window);
                 if(event.getSource() == playerName){
-                    Player user = new Player(pName,"..");
+                    Player user = new Player(/*pName*/"filler","..");
                     //players.add(user);
                     System.out.println(counter);
                 }
