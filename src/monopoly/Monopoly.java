@@ -60,12 +60,16 @@ public class Monopoly {
                         System.out.println("Type 'roll' to roll, " + p.get(currentP).getName());
                         rolling = in.next();
                     } while (!rolling.equalsIgnoreCase("roll"));//Doesn't yet players leave until they say they want to roll
-                }else{
-                    do {//Force to roll
+                }else{//If they are in jail
+                    do {//Force to roll or pay
                         System.out.println("Type 'roll' to roll, " + p.get(currentP).getName());
                         System.out.println("Or type 'pay' to pay to get out of jail");
                         rolling = in.next();
                     } while (!rolling.equalsIgnoreCase("roll")&&!rolling.equalsIgnoreCase("pay"));
+                    if(rolling.equalsIgnoreCase("pay")||p.get(currentP).getTurnsInJail()==3){//Technically against the rules but the code becomes easier and a very rare case that it does not work. You would need to be in jail and lose (5/6) three times and be bankrupt
+                        p.get(currentP).loseMoney(50);
+                        p.get(currentP).leaveJail();
+                    }
                 }
                 
                 userDice1 = rng.nextInt(6) + 1;//Rolls dice
@@ -75,17 +79,24 @@ public class Monopoly {
                 roll = userDice1 + userDice2;//Adds the value of the roll
 
                 if (userDice1 == userDice2) {//Checks for doubles
-                    doubleCount++;
-                    if (doubleCount != 3) {//If they rolled a total of 3 doubles in their turn, go to jail for speeding
-                        System.out.println("DOUBLES");
-                        doub = true;
-                    } else {//If they have 3 doubles it loads the jail event
-                        doub = false;
-                        doubleCount = 0;
-                        p.get(currentP).toJail();
-                        System.out.println(p.get(currentP).getName() + " is now at " + tiles[p.get(currentP).getSpace()]);
+                    if (!p.get(currentP).isInJail()) {
+                        doubleCount++;
+                        if (doubleCount != 3) {//If they rolled a total of 3 doubles in their turn, go to jail for speeding
+                            System.out.println("DOUBLES");
+                            doub = true;
+                        } else {//If they have 3 doubles it loads the jail event
+                            doub = false;                                                    
+                            doubleCount = 0;
+                            p.get(currentP).toJail();
+                            System.out.println(p.get(currentP).getName() + " is now at " + tiles[p.get(currentP).getSpace()]);
+                        }
+                    }else{
+                        p.get(currentP).leaveJail();
                     }
                 } else {
+                    if(p.get(currentP).isInJail()){
+                        p.get(currentP).endTurnInJail();
+                    }
                     doub = false;
                     doubleCount = 0;
                 }
