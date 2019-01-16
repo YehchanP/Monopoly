@@ -9,7 +9,7 @@ package monopoly;
  *
  * @author 324745561
  */
-public class Nothing extends EventTiles{
+public class Nothing extends Tiles{
     public String eventSaying;
     
     

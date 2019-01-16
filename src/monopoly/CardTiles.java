@@ -9,7 +9,7 @@ package monopoly;
  *
  * @author 324745561
  */
-public class CardTiles extends EventTiles{
+public class CardTiles extends Tiles{
 
     public CardTiles(String name, int position) {
         super(name, position);
