@@ -9,17 +9,15 @@ package monopoly;
  *
  * @author 324745561
  */
-public class NoEvent extends Tiles{
-    public String eventSaying;
-    
-    
-    public NoEvent(String name, int position, String eventSaying) {
+public abstract class EventTiles extends Tiles{
+
+    public EventTiles(String name, int position) {
         super(name, position);
-        this.eventSaying = eventSaying;
     }
     
-    @Override
-    void event(Player p){
-        System.out.println(eventSaying);
-    }
+   
+
+
+
+    
 }
