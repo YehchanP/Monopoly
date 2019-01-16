@@ -10,9 +10,10 @@ package monopoly;
  * @author 324745561
  */
 public class RailProp extends Properties{
-
-    public RailProp(String name, int position, int cost) {
-        super(name, position, cost);
+    
+    public int []rent= new int[]{50,100,150,200}; 
+    public RailProp(String name, int position) {
+        super(name, position, 200);
     }
 
     @Override
