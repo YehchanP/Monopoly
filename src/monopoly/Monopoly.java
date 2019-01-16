@@ -8,6 +8,7 @@ package monopoly;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -35,14 +36,14 @@ public class Monopoly {
 
         System.out.println("Enter the number of players");
         int numOfPlayers = Integer.parseInt(in.next());
-        Player[] p = new Player[numOfPlayers];
-        for (int i = 0; i < p.length; i++) {
+        ArrayList<Player> p = new ArrayList<>();
+        for (int i = 0; i < numOfPlayers; i++) {
             System.out.println("Enter name for player " + (i + 1));
             String nameTemp = in.next();
             System.out.println("Enter token for player " + (i + 1));
             String tokenTemp = in.next();
             Player pTemp = new Player(nameTemp, tokenTemp);
-            p[i] = pTemp;
+            p.add(pTemp);
             pTemp.setName(nameTemp);
         }
 
@@ -53,16 +54,24 @@ public class Monopoly {
         while (!response.equalsIgnoreCase("save")) {//Game plays while no one says yes at the end of their turn
 
             do {//Rolls either the first time or doubles
-
-                do {//Force to roll
-                    System.out.println("Type 'roll' to roll, " + p[currentP].getName());
-                    rolling = in.next();
-                } while (!rolling.equalsIgnoreCase("roll"));//Doesn't yet players leave until they say they want to roll
-
+                
+                if(!p.get(currentP).isInJail()) {//If they aren't in Jail, roll normally
+                    do {//Force to roll
+                        System.out.println("Type 'roll' to roll, " + p.get(currentP).getName());
+                        rolling = in.next();
+                    } while (!rolling.equalsIgnoreCase("roll"));//Doesn't yet players leave until they say they want to roll
+                }else{
+                    do {//Force to roll
+                        System.out.println("Type 'roll' to roll, " + p.get(currentP).getName());
+                        System.out.println("Or type 'pay' to pay to get out of jail");
+                        rolling = in.next();
+                    } while (!rolling.equalsIgnoreCase("roll")&&!rolling.equalsIgnoreCase("pay"));
+                }
+                
                 userDice1 = rng.nextInt(6) + 1;//Rolls dice
                 userDice2 = rng.nextInt(6) + 1;
 
-                System.out.println(p[currentP].getName() + " rolled " + userDice1 + " " + userDice2);//Outputs roll
+                System.out.println(p.get(currentP).getName() + " rolled " + userDice1 + " " + userDice2);//Outputs roll
                 roll = userDice1 + userDice2;//Adds the value of the roll
 
                 if (userDice1 == userDice2) {//Checks for doubles
@@ -73,27 +82,27 @@ public class Monopoly {
                     } else {//If they have 3 doubles it loads the jail event
                         doub = false;
                         doubleCount = 0;
-                        p[currentP].toJail();
-                        System.out.println(p[currentP].getName() + " is now at " + tiles[p[currentP].getSpace()]);
+                        p.get(currentP).toJail();
+                        System.out.println(p.get(currentP).getName() + " is now at " + tiles[p.get(currentP).getSpace()]);
                     }
                 } else {
                     doub = false;
                     doubleCount = 0;
                 }
 
-                if (!p[currentP].isInJail()) {
-                    movement(roll, p[currentP]);
-                    System.out.println(p[currentP].getName() + " is now at " + tiles[p[currentP].getSpace()]);
+                if (!p.get(currentP).isInJail()) {
+                    movement(roll, p.get(currentP));
+                    System.out.println(p.get(currentP).getName() + " is now at " + tiles[p.get(currentP).getSpace()]);
                 }
                 
-                System.out.println(p[currentP].getName()+" has $"+p[currentP].getMoney());
+                System.out.println(p.get(currentP).getName()+" has $"+p.get(currentP).getMoney());
                 
                 
                 System.out.println("Type 'save' to quit");
                 if (!doub) {
                     System.out.println("Type anything else to pass the turn");
                     currentP++;
-                    if (currentP >= p.length) {
+                    if (currentP >= p.size()) {
                         currentP = 0;
                     }
                 } else {
