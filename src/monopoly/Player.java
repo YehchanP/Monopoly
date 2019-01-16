@@ -71,8 +71,9 @@ public class Player {
         money+=val;
     }
     
-    public void loseMoney(int val){
+    public boolean loseMoney(int val){
         money-=val;
+        return (this.money>0);
     }
     
     public void move(){
