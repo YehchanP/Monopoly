@@ -162,4 +162,51 @@ public class Monopoly {
             System.err.format("Error reading file");
         }
     }
+    
+    public static void createTiles(){
+        try {
+            BufferedReader BR = new BufferedReader(new FileReader("Properties.txt"));
+            int pos = 0;
+            String line = "";
+            pos = BR.read();
+            line = BR.readLine();
+            while (line != null) {
+                if (pos <= 1) {
+                    HouseProp temp = new HouseProp(line, pos, 60, 2, "brown", 2, 10, 30, 90, 160, 250, 50);
+                } else if (pos <= 3) {
+                    HouseProp temp = new HouseProp(line, pos, 60, 2, "brown", 4, 20, 60, 180, 320, 450, 50);
+                } else if (pos <= 5) {
+                    RailProp temp = new RailProp(line, pos);
+                } else if (pos <= 8) {
+                    HouseProp temp = new HouseProp(line, pos, 100, 3, "light blue", 6, 30, 90, 270, 400, 550, 50);
+                } else if (pos <= 9) {
+                    HouseProp temp = new HouseProp(line, pos, 120, 3, "light blue", 8, 40, 100, 300, 450, 600, 50);
+                } else if (pos <= 11) {
+                    HouseProp temp = new HouseProp(line, pos, 140, 3, "pink", 10, 50, 150, 450, 625, 750, 100);
+                } else if (pos <= 12) {
+                    //Temporary for the electric company
+                    HouseProp temp = new HouseProp(line, pos, 150, 2, "util", 30, 30, 50, 50, 25, 50, 100000);
+                } else if (pos <= 13) {
+                    HouseProp temp = new HouseProp(line, pos, 140, 3, "pink", 10, 50, 150, 450, 625, 750, 100);
+                } else if (pos <= 14) {
+                    HouseProp temp = new HouseProp(line, pos, 160, 3, "pink", 12, 60, 180, 500, 700, 900, 100);
+                } else if (pos <= 15) {
+                    RailProp temp = new RailProp(line, pos);
+                } else if (pos <= 18) {
+                    HouseProp temp = new HouseProp(line, pos, 180, 3, "orange", 14, 70, 200, 550, 750, 950, 100);
+                }else if (pos <= 19) {
+                    HouseProp temp = new HouseProp(line, pos, 180, 3, "orange", 16, 80, 220, 600, 800, 1000, 100);
+                }else if (pos <= 23) {
+                    HouseProp temp = new HouseProp(line, pos, 220, 3, "red", 18, 90, 250, 700, 875, 1050, 100);
+                }
+
+                tiles[pos] = line;
+                line = BR.readLine(); 
+            }
+            BR.close();
+        } catch (IOException e) {
+            System.err.format("Error reading file");
+        }
+        
+    }
 }
