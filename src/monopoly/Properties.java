@@ -13,11 +13,16 @@ public abstract class Properties extends Tiles{
 
     public int cost;
     public int amountOwned = 0;
+    public int totalAmount;
+    public boolean monopoly = false;
     public int owner = -1;
+    private String colour;
     
-    public Properties(String name, int position, int cost) {
+    public Properties(String name, int position, int cost, int totalAmount, String colour) {
         super(name, position);
         this.cost = cost;
+        this.totalAmount = totalAmount;
+        this.colour = colour;
     }
 
     

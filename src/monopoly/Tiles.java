@@ -5,6 +5,8 @@
  */
 package monopoly;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 324745561
@@ -18,5 +20,5 @@ public abstract class Tiles {
         this.position = position;
     }
     
-    abstract void event(Player p);
+    abstract void event(Player p, ArrayList<Player> listP);
 }

@@ -16,10 +16,14 @@ public class Player {
     private String token;
     private boolean inJail = false;
     private int turnsInJail = 0;
+    private int playerNumber;//This is going to be used for ownership
+    private static int amountOfPlayers = 0;
     
     public Player(String name, String token) {
         this.name = name;
         this.token = token;
+        amountOfPlayers++;
+        this.playerNumber = amountOfPlayers;
     }
 
     public int getSpace() {
@@ -38,6 +42,10 @@ public class Player {
         return token;
     }
 
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+    
     public boolean isInJail() {
         return inJail;
     }

@@ -5,6 +5,8 @@
  */
 package monopoly;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 324745561
@@ -19,7 +21,7 @@ public class Nothing extends Tiles{
     }
     
     @Override
-    void event(Player p){
+    void event(Player p, ArrayList<Player> listP){
         System.out.println(eventSaying);
     }
 }
