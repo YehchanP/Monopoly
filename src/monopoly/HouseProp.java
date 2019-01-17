@@ -68,9 +68,9 @@ public class HouseProp extends Properties{
                         currentRent = currentRent*2;
                     }
                 }
-                p.loseMoney(currentRent);
+                p.loseMoney(currentRent);//Steal money for rent
                 
-                listP.get(trueOwner).addMoney(currentRent);
+                listP.get(trueOwner).addMoney(currentRent);//Collect Rent money
             }
         }
     }
