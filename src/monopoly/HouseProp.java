@@ -21,7 +21,12 @@ public class HouseProp extends Properties{
     
     public HouseProp(String name, int position, int cost, int totalAmount, String colour, int rent, int rent1, int rent2, int rent3, int rent4, int rent5, int hCost) {
         super(name, position, cost, totalAmount, colour);
-        
+        this.rent[0] = rent;
+        this.rent[1] = rent1;
+        this.rent[2] = rent2;
+        this.rent[3] = rent3;
+        this.rent[4] = rent4;
+        this.rent[5] = rent5;
     }
 
     public int[] getRent() {
