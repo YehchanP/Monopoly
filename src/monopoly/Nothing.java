@@ -11,11 +11,11 @@ import java.util.ArrayList;
  *
  * @author 324745561
  */
-public class NoEvent extends Tiles{
+public class Nothing extends Tiles{
     public String eventSaying;
     
     
-    public NoEvent(String name, int position, String eventSaying) {
+    public Nothing(String name, int position, String eventSaying) {
         super(name, position);
         this.eventSaying = eventSaying;
     }

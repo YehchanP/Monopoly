@@ -16,10 +16,9 @@ public class CardTiles extends Tiles{
     public CardTiles(String name, int position) {
         super(name, position);
     }
-    
+    Random rng = new Random();
     @Override
     void event(Player p, ArrayList<Player> listP) {
-        Random rng = new Random();
         System.out.println("You stopped being a realtor for a bit to play the stock market, this went horribly wrong");
         System.out.println("Lose $50 and a random amount of money since you doubled down on a bad investment");
         int coin = rng.nextInt(2);
