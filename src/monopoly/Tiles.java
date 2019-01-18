@@ -19,19 +19,15 @@ public abstract class Tiles {
         this.name = name;
         this.position = position;
     }
-    
+
     abstract void event(Player p, ArrayList<Player> listP);
 
     public String getName() {
         return name;
     }
-<<<<<<< HEAD
-=======
-
     public int getPosition() {
         return position;
     }
->>>>>>> parent of 4534f53... Merge branch 'master' of https://github.com/YehchanP/Monopoly
-    
-    
+
+
 }

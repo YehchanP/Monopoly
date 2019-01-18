@@ -59,11 +59,7 @@ public class Monopoly {
 
             do {//Rolls either the first time or doubles
 
-<<<<<<< HEAD
                 if(!p.get(currentP).isInJail()) {//If they aren't in Jail, roll normally
-=======
-                if (!p.get(currentP).isInJail()) {//If they aren't in Jail, roll normally
->>>>>>> parent of 4534f53... Merge branch 'master' of https://github.com/YehchanP/Monopoly
                     do {//Force to roll
                         System.out.println("Type 'roll' to roll, " + p.get(currentP).getName());
                         rolling = in.next();
@@ -115,12 +111,7 @@ public class Monopoly {
                     board.get(p.get(currentP).getSpace()).event(p.get(currentP), p);
                 }
 
-<<<<<<< HEAD
-                System.out.println(p.get(currentP).getName()+" has $"+p.get(currentP).getMoney());
-
-=======
                 System.out.println(p.get(currentP).getName() + " has $" + p.get(currentP).getMoney());
->>>>>>> parent of 4534f53... Merge branch 'master' of https://github.com/YehchanP/Monopoly
 
                 System.out.println("Type 'save' to quit");
                 if (!doub) {
@@ -133,7 +124,7 @@ public class Monopoly {
                     System.out.println("Type anything else to roll again");
                 }
                 response = in.next();
-                
+
                 System.out.println("\n\n\n\n");
             } while (doub);
         }
