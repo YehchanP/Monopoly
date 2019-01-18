@@ -60,7 +60,7 @@ public class HouseProp extends Properties{
                 int trueOwner = 0;//Finding the real owner
                 for (int i = 0; i < listP.size(); i++) {
                     if(listP.get(i).getPlayerNumber()==owner){
-                        trueOwner = listP.get(i).getPlayerNumber();
+                        trueOwner = i;
                         break;
                     }
                 }

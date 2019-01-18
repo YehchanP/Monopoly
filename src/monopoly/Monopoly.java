@@ -108,6 +108,7 @@ public class Monopoly {
                 if (!p.get(currentP).isInJail()) {
                     movement(roll, p.get(currentP));
                     System.out.println(p.get(currentP).getName() + " is now at " + board.get(p.get(currentP).getSpace()).getName());
+                    board.get(p.get(currentP).getSpace()).event(p.get(currentP), p);
                 }
 
                 System.out.println(p.get(currentP).getName() + " has $" + p.get(currentP).getMoney());
@@ -123,7 +124,8 @@ public class Monopoly {
                     System.out.println("Type anything else to roll again");
                 }
                 response = in.next();
-
+                
+                System.out.println("\n\n\n\n");
             } while (doub);
         }
     }
