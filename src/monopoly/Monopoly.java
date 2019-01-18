@@ -110,8 +110,6 @@ public class Monopoly {
                 
                 
                 System.out.println("Type 'save' to quit");
-                System.out.println("Type 'manage' to manage properties");
-                
                 if (!doub) {
                     System.out.println("Type anything else to pass the turn");
                     currentP++;

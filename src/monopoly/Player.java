@@ -5,8 +5,6 @@
  */
 package monopoly;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author 324745561
@@ -18,7 +16,6 @@ public class Player {
     private String token;
     private boolean inJail = false;
     private int turnsInJail = 0;
-    private ArrayList<Properties> own = new ArrayList<>();
     private int playerNumber;//This is going to be used for ownership
     private static int amountOfPlayers = 0;
     
@@ -106,16 +103,6 @@ public class Player {
         }
     }
     
-    public void addProp(Properties prop){
-        this.own.add(prop);
-        
-    }
     
-    public void removeProp(int pos){
-        for (int i = 0; i < this.own.size(); i++) {//Linear search
-            if (this.own.get(i).getPosition()==pos){
-                this.own.remove(i);
-            }
-        }
-    }
+    
 }

@@ -6,21 +6,26 @@
 package monopoly;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
  * @author 324745561
  */
 public class RailProp extends Properties{
+<<<<<<< HEAD
     Scanner in = new Scanner(System.in);
     public int []rent= new int[]{50,100,150,200};
+=======
+    
+    public int []rent= new int[]{50,100,150,200}; 
+>>>>>>> parent of 2cc73db... Added method to remove and add properties to players
     public RailProp(String name, int position) {
         super(name, position, 200, 4, "grey");
     }
 
     @Override
     void event(Player p, ArrayList<Player> listP) {
+<<<<<<< HEAD
 
         if(this.owner<0){
             System.out.println("Would you like to purchase "+this.getName()+" for $"+this.cost);
@@ -48,6 +53,9 @@ public class RailProp extends Properties{
             }
         }
 
+=======
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+>>>>>>> parent of 2cc73db... Added method to remove and add properties to players
     }
 
 }
