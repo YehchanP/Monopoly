@@ -1,18 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package monopoly;
 
-import javafx.scene.image.*;
-
+/**
+ *
+ * @author 324745561
+ */
 public class Player {
     private int space = 0;
     private int money = 1500;
     private String name;
-    private Image token;
+    private String token;
     private boolean inJail = false;
     private int turnsInJail = 0;
     private int playerNumber;//This is going to be used for ownership
     private static int amountOfPlayers = 0;
     
-    public Player(String name, Image token) {
+    public Player(String name, String token) {
         this.name = name;
         this.token = token;
         amountOfPlayers++;
@@ -31,7 +38,7 @@ public class Player {
         return name;
     }
 
-    public Image getToken() {
+    public String getToken() {
         return token;
     }
 
@@ -70,7 +77,7 @@ public class Player {
         this.name = name;
     }
 
-    public void Image(Image token) {
+    public void setToken(String token) {
         this.token = token;
     }
     
@@ -94,10 +101,6 @@ public class Player {
             this.addMoney(200);
             space = 0;
         }
-    }
-
-    void setToken(Image car) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

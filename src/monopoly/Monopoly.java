@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-import javafx.scene.image.*;
 
 /**
  *
@@ -32,7 +31,6 @@ public class Monopoly {
         int userDice2 = 0;
         int roll = 0;
         String response = "s";
-        Image tokenTemp = new Image("file:car.png");
 
         readTiles(tiles);
 
@@ -42,8 +40,8 @@ public class Monopoly {
         for (int i = 0; i < numOfPlayers; i++) {
             System.out.println("Enter name for player " + (i + 1));
             String nameTemp = in.next();
-            //System.out.println("Enter token for player " + (i + 1));
-            //String tokenTemp = in.next();
+            System.out.println("Enter token for player " + (i + 1));
+            String tokenTemp = in.next();
             Player pTemp = new Player(nameTemp, tokenTemp);
             p.add(pTemp);
             pTemp.setName(nameTemp);
