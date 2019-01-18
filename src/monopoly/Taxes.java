@@ -17,12 +17,12 @@ public class Taxes extends Tiles{
         super(name, position);
         this.tax = tax;
     }
-    
+
 
 
     @Override
     void event(Player p, ArrayList<Player> listP) {
-        System.out.println(p.getName()+" loses $"+tax+" to "+name);
+        System.out.println(p.getName()+" loses $"+tax+" to "+ this.getName());
         p.loseMoney(tax);
     }
 }

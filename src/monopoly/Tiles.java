@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author 324745561
  */
 public abstract class Tiles {
-    public String name;
-    public int position;
+    private String name;
+    private int position;
 
     public Tiles(String name, int position) {
         this.name = name;
@@ -25,6 +25,13 @@ public abstract class Tiles {
     public String getName() {
         return name;
     }
+<<<<<<< HEAD
+=======
+
+    public int getPosition() {
+        return position;
+    }
+>>>>>>> parent of 4534f53... Merge branch 'master' of https://github.com/YehchanP/Monopoly
     
     
 }

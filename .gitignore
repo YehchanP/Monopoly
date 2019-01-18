@@ -1,3 +1,8 @@
 
 *.properties
+<<<<<<< HEAD
 *.properties
+=======
+*.xml
+*.xml
+>>>>>>> parent of 4534f53... Merge branch 'master' of https://github.com/YehchanP/Monopoly
