@@ -22,7 +22,7 @@ public class Monopoly {
      * @param args the command line arguments
      */
 //    static String[] tiles = new String[40];
-    static ArrayList<Tiles> board = new ArrayList<>(40);
+    static ArrayList<Tiles> board = new ArrayList<>();
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -32,9 +32,12 @@ public class Monopoly {
         int userDice2 = 0;
         int roll = 0;
         String response = "s";
-
+        for (int i = 0; i < 40; i++) {
+            board.add(null);
+        }
+        createTiles();
 //        readTiles(tiles);
-        
+
         System.out.println("Enter the number of players");
         int numOfPlayers = Integer.parseInt(in.next());
         ArrayList<Player> p = new ArrayList<>();
@@ -55,24 +58,24 @@ public class Monopoly {
         while (!response.equalsIgnoreCase("save")) {//Game plays while no one says yes at the end of their turn
 
             do {//Rolls either the first time or doubles
-                
-                if(!p.get(currentP).isInJail()) {//If they aren't in Jail, roll normally
+
+                if (!p.get(currentP).isInJail()) {//If they aren't in Jail, roll normally
                     do {//Force to roll
                         System.out.println("Type 'roll' to roll, " + p.get(currentP).getName());
                         rolling = in.next();
                     } while (!rolling.equalsIgnoreCase("roll"));//Doesn't yet players leave until they say they want to roll
-                }else{//If they are in jail
+                } else {//If they are in jail
                     do {//Force to roll or pay
                         System.out.println("Type 'roll' to roll, " + p.get(currentP).getName());
                         System.out.println("Or type 'pay' to pay to get out of jail");
                         rolling = in.next();
-                    } while (!rolling.equalsIgnoreCase("roll")&&!rolling.equalsIgnoreCase("pay"));
-                    if(rolling.equalsIgnoreCase("pay")||p.get(currentP).getTurnsInJail()==3){//Technically against the rules but the code becomes easier and a very rare case that it does not work. You would need to be in jail and lose (5/6) three times and be bankrupt
+                    } while (!rolling.equalsIgnoreCase("roll") && !rolling.equalsIgnoreCase("pay"));
+                    if (rolling.equalsIgnoreCase("pay") || p.get(currentP).getTurnsInJail() == 3) {//Technically against the rules but the code becomes easier and a very rare case that it does not work. You would need to be in jail and lose (5/6) three times and be bankrupt
                         p.get(currentP).loseMoney(50);
                         p.get(currentP).leaveJail();
                     }
                 }
-                
+
                 userDice1 = rng.nextInt(6) + 1;//Rolls dice
                 userDice2 = rng.nextInt(6) + 1;
 
@@ -86,16 +89,16 @@ public class Monopoly {
                             System.out.println("DOUBLES");
                             doub = true;
                         } else {//If they have 3 doubles it loads the jail event
-                            doub = false;                                                    
+                            doub = false;
                             doubleCount = 0;
                             p.get(currentP).toJail();
-                            System.out.println(p.get(currentP).getName() + " is now at " + board.get(p.get(currentP).getSpace()).name);
+                            System.out.println(p.get(currentP).getName() + " is now at " + board.get(p.get(currentP).getSpace()).getName());
                         }
-                    }else{
+                    } else {
                         p.get(currentP).leaveJail();
                     }
                 } else {
-                    if(p.get(currentP).isInJail()){
+                    if (p.get(currentP).isInJail()) {
                         p.get(currentP).endTurnInJail();
                     }
                     doub = false;
@@ -104,12 +107,11 @@ public class Monopoly {
 
                 if (!p.get(currentP).isInJail()) {
                     movement(roll, p.get(currentP));
-                    System.out.println(p.get(currentP).getName() + " is now at " + board.get(p.get(currentP).getSpace()).name);
+                    System.out.println(p.get(currentP).getName() + " is now at " + board.get(p.get(currentP).getSpace()).getName());
                 }
-                
-                System.out.println(p.get(currentP).getName()+" has $"+p.get(currentP).getMoney());
-                
-                
+
+                System.out.println(p.get(currentP).getName() + " has $" + p.get(currentP).getMoney());
+
                 System.out.println("Type 'save' to quit");
                 if (!doub) {
                     System.out.println("Type anything else to pass the turn");
@@ -129,7 +131,7 @@ public class Monopoly {
     public static void movement(int roll, Player player) {
 
         //Psuedo code for animation thing. Movement animation should be based of this
-        System.out.println(player.getName() + " is now passing " + board.get(player.getSpace()).name);
+        System.out.print(player.getName() + " is now passing " + board.get(player.getSpace()).getName());
         if (player.getSpace() < 10) {
             System.out.println(" horizontally left");
         } else if (player.getSpace() < 20) {
@@ -163,17 +165,45 @@ public class Monopoly {
 //            System.err.format("Error reading file");
 //        }
 //    }
-    
-    public static void createTiles(){
-        
-        
-        
+    public static void createTiles() {
+
+        NoEvent go = new NoEvent("Go", 0, "Landed on go. It's like free parking, but with money");
+        NoEvent jail = new NoEvent("Jail/Just Visiting", 10, "Either stuck here or just visiting fellow criminals");
+        NoEvent freeP = new NoEvent("Free Parking", 20, "Free parking is rare. You don't owe anyone anything for now");
+        NoEvent goToJail = new NoEvent("Go To Jail", 30, "Go to Jail. This may or may not be based on your race");
+
+        CardTiles chance1 = new CardTiles("Chance (1)", 7);
+        CardTiles chance2 = new CardTiles("Chance (2)", 22);
+        CardTiles chance3 = new CardTiles("Chance (3)", 36);
+
+        CardTiles cc1 = new CardTiles("Community Chest (1)", 2);
+        CardTiles cc2 = new CardTiles("Community Chest (2)", 17);
+        CardTiles cc3 = new CardTiles("Community Chest (3)", 33);
+
+        Taxes income = new Taxes("Income Tax", 4, 200);
+        Taxes luxury = new Taxes("Luxury Tax", 38, 100);
+
+        board.set(go.getPosition(), go);
+        board.set(jail.getPosition(), jail);
+        board.set(freeP.getPosition(), freeP);
+        board.set(goToJail.getPosition(), goToJail);
+
+        board.set(chance1.getPosition(), chance1);
+        board.set(chance2.getPosition(), chance2);
+        board.set(chance3.getPosition(), chance3);
+
+        board.set(cc1.getPosition(), cc1);
+        board.set(cc2.getPosition(), cc2);
+        board.set(cc3.getPosition(), cc3);
+
+        board.set(income.getPosition(), income);
+        board.set(luxury.getPosition(), luxury);
         try {//Creates properties
-            
+
             BufferedReader BR = new BufferedReader(new FileReader("Properties.txt"));
             int pos = 0;
             String line = "";
-            pos = BR.read();
+            pos = Integer.parseInt(BR.readLine());
             line = BR.readLine();
             while (line != null) {
                 Tiles temp = null;
@@ -226,14 +256,18 @@ public class Monopoly {
                 } else if (pos <= 39) {
                     temp = new HouseProp(line, pos, 350, 2, "dark blue", 35, 175, 500, 1100, 1300, 1500, 200);
                 }
-
-                board.set(pos, (Tiles) temp);
-                line = BR.readLine(); 
+                board.set(temp.getPosition(), temp);
+                String lineTemp = BR.readLine();
+                if(lineTemp == null){
+                    break;
+                }
+                pos = Integer.parseInt(lineTemp);
+                line = BR.readLine();
             }
             BR.close();
         } catch (IOException e) {
             System.err.format("Error reading file");
         }
-        
+
     }
 }

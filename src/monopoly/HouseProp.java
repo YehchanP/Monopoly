@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class HouseProp extends Properties{
     Scanner in = new Scanner(System.in);
-    private int rent[] = new int[5];
+    private int rent[] = new int[6];
     private int houseCost;
     private int amountOfHouses = 0;
     
@@ -47,7 +47,7 @@ public class HouseProp extends Properties{
     @Override
     void event(Player p, ArrayList<Player> listP) {
         if(this.owner<0){
-            System.out.println("Would you like to purchase "+this.name+" for $"+this.cost);
+            System.out.println("Would you like to purchase "+this.getName()+" for $"+this.cost);
             System.out.println("Your current balance is $"+p.getMoney());
             String response = in.nextLine();
             if(response.equalsIgnoreCase("yes")){

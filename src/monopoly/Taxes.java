@@ -22,7 +22,7 @@ public class Taxes extends Tiles{
 
     @Override
     void event(Player p, ArrayList<Player> listP) {
-        System.out.println(p.getName()+" loses $"+tax+" to "+name);
+        System.out.println(p.getName()+" loses $"+tax+" to "+ this.getName());
         p.loseMoney(tax);
     }
 }
