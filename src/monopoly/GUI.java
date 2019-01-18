@@ -15,31 +15,15 @@ import javafx.stage.Stage;
 import javafx.scene.text.*;
 
 public class GUI extends Application implements EventHandler{
-    
+
     private Player temp = new Player(".","..");
-    
+
     private Scene previousScene;
-    
+
     private Stage window;
-        
+
     private Button startBtn, loadBtn, twoPlayers, threePlayers, fourPlayers, back, playerName;
-<<<<<<< HEAD
-    
-    private TextField pName;
-    
-    private int counter;
-        
-    private String tempName, tempToken;
-    
-    public ArrayList <Player> players = new ArrayList <Player>();
-    
-    public ArrayList <String> test = new ArrayList <String>();
-    
-    @Override
-    public void start(Stage primaryStage) {
-        window = primaryStage;
-        
-=======
+
     private Button carBtn, horseBtn, planeBtn, penguinBtn, scottTerrBtn, shipBtn;
 
     private TextField pName;
@@ -70,34 +54,26 @@ public class GUI extends Application implements EventHandler{
     }
 
     public void titleScene(Stage primaryStage) {
->>>>>>> GUI
+
         StackPane root = new StackPane();
-        
+
         Scene titlePage = new Scene(root, 1000, 750);
-        
+
         //Creates the start button
         startBtn = new Button();
         startBtn.setText("Start New Game");
         startBtn.setOnAction(this);
         startBtn.setStyle("-fx-font-size: 20px; ");
         startBtn.setTranslateX(-270);
-<<<<<<< HEAD
-        startBtn.setTranslateY(150);
-        
-=======
         startBtn.setTranslateY(140);
 
->>>>>>> GUI
+
         //Creates the loading button
         loadBtn = new Button();
         loadBtn.setText("Load Game");
         loadBtn.setOnAction(this);
         loadBtn.setStyle("-fx-font-size: 20px; ");
         loadBtn.setTranslateX(250);
-<<<<<<< HEAD
-        loadBtn.setTranslateY(150);
-        
-=======
         loadBtn.setTranslateY(140);
 
         //Creates a new image
@@ -108,37 +84,30 @@ public class GUI extends Application implements EventHandler{
         iv.setImage(logo);
         iv.setTranslateY(-70);
 
->>>>>>> GUI
         //assigns previousScene a scene value for using the back button
         previousScene = titlePage;
-        
+
         //Adds elements to the scene
-<<<<<<< HEAD
-        root.getChildren().addAll(startBtn, loadBtn);
-        
         //Creates and displays the scene and stage
         primaryStage.setTitle("Monopoly");
-=======
         root.getChildren().addAll(startBtn, loadBtn, iv);
-
->>>>>>> GUI
         primaryStage.setScene(titlePage);
     }
 
     //Method for creating the number of players page
     public void numPlayersScene(Stage primaryStage){
-        
+
         //Declaration and initialization of variables
         Text txt1 = new Text ("Number of Players:");
-        
+
         StackPane root = new StackPane();
-        
+
         Scene numPlayersPage = new Scene(root, 1000, 750);
-        
+
         //Customization of JText element
         txt1.setStyle("-fx-font-size: 30px; ");
         txt1.setTranslateY(-100);
-        
+
         //Customization of JButton element
         twoPlayers = new Button();
         twoPlayers.setText("2");
@@ -147,88 +116,56 @@ public class GUI extends Application implements EventHandler{
         twoPlayers.setTranslateX(-270);
         twoPlayers.setTranslateY(70);
 
-        //Customization of JButton element        
+        //Customization of JButton element
         threePlayers = new Button();
         threePlayers.setText("3");
         threePlayers.setOnAction(this);
         threePlayers.setStyle("-fx-font-size: 30px; ");
         threePlayers.setTranslateX(0);
-<<<<<<< HEAD
-        threePlayers.setTranslateY(100);
-        
-=======
         threePlayers.setTranslateY(70);
 
->>>>>>> GUI
         //Customization of JButton element
         fourPlayers = new Button();
         fourPlayers.setText("4");
         fourPlayers.setOnAction(this);
         fourPlayers.setStyle("-fx-font-size: 30px; ");
         fourPlayers.setTranslateX(270);
-<<<<<<< HEAD
-        fourPlayers.setTranslateY(100);
-        
-=======
         fourPlayers.setTranslateY(70);
 
->>>>>>> GUI
         //Adds elements to the scene
         root.getChildren().addAll(twoPlayers, threePlayers, fourPlayers, txt1);
-        
+
         //Sets new scene
         primaryStage.setScene(numPlayersPage);
     }
-    
+
     //Method for character creation GUI
     public void playerCreationScene(Stage primaryStage){
         StackPane root = new StackPane();
-        
+
         Scene playerCreationPage = new Scene(root, 1000, 750);
-        
+
         Text txt1 = new Text ("Player " + (counter + 1) + " Name:");
-        
+
         txt1.setStyle("-fx-font-size: 30px; ");
-<<<<<<< HEAD
-        txt1.setTranslateY(-150);
-        
-        pName = new TextField();
-        pName.setStyle("-fx-font-size: 20px; ");
-        pName.setMaxSize(400, 20);
-        pName.setTranslateY(-50);
-        
-        tempName = pName.getText();
-        
-=======
         txt1.setTranslateY(-100);
 
         pName = new TextField();
         pName.setStyle("-fx-font-size: 20px; ");
         pName.setMaxSize(400, 20);
 
->>>>>>> GUI
         playerName = new Button();
         playerName.setText("Enter");
         playerName.setOnAction(this);
         playerName.setStyle("-fx-font-size: 20px; ");
         playerName.setTranslateX(270);
-<<<<<<< HEAD
-        playerName.setTranslateY(-50);
-        
-=======
 
         tempName = pName.getText();
 
->>>>>>> GUI
         root.getChildren().addAll(txt1, pName, playerName);
-        
+
         primaryStage.setScene(playerCreationPage);
     }
-<<<<<<< HEAD
-    
-    public static void main(String[] args) {
-        launch(args);
-=======
 
     public void tokenSelectionScene(Stage primaryStage) {
 
@@ -259,7 +196,7 @@ public class GUI extends Application implements EventHandler{
         penguinBtn.setGraphic(new ImageView(penguin));
         scottTerrBtn.setGraphic(new ImageView(scottTerr));
         shipBtn.setGraphic(new ImageView(ship));
-        
+
         carBtn.setOnAction(this);
         horseBtn.setOnAction(this);
         planeBtn.setOnAction(this);
@@ -272,45 +209,14 @@ public class GUI extends Application implements EventHandler{
         root.getChildren().addAll(pane, txt);
 
         primaryStage.setScene(tokenSelection);
->>>>>>> GUI
     }
-    
+
     //Method for handling button and any events
     @Override
     public void handle(Event event) {
         counter = 0;
         if(event.getSource() == startBtn){
             numPlayersScene(window);
-<<<<<<< HEAD
-            
-        }else if(event.getSource() == loadBtn){
-            System.out.println("Loading");
-            
-        }else if(event.getSource() == twoPlayers){
-            while(counter < 2) {
-                playerCreationScene(window);
-                if(event.getSource() == playerName){
-                    Player user = new Player(tempName,"..");
-                    players.add(user);
-                    System.out.println(counter);
-                }
-                counter++;
-                System.out.println("added");
-            }
-            
-        }else if(event.getSource() == threePlayers){
-            for (int i = 0; i < 2; i++) {
-                playerCreationScene(window);
-            }
-            
-        }else if(event.getSource() == fourPlayers){
-            for (int i = 0; i < 2; i++) {
-                playerCreationScene(window);
-            }
-        }
-    }
-    
-=======
 
         } else if (event.getSource() == loadBtn) {
             System.out.println("Loading");
@@ -399,6 +305,4 @@ public class GUI extends Application implements EventHandler{
     public static void main(String[] args) {
         launch(args);
     }
-
->>>>>>> GUI
 }

@@ -4,25 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RailProp extends Properties{
-<<<<<<< HEAD
 
     Scanner in = new Scanner(System.in);
     public int []rent= new int[]{50,100,150,200};
 
 
-=======
-    
-    public int []rent= new int[]{50,100,150,200}; 
->>>>>>> GUI
     public RailProp(String name, int position) {
         super(name, position, 200, 4, "grey");
     }
 
     @Override
     void event(Player p, ArrayList<Player> listP) {
-<<<<<<< HEAD
-
-
         if(this.owner<0){
             System.out.println("Would you like to purchase "+this.getName()+" for $"+this.cost);
             System.out.println("Your current balance is $"+p.getMoney());
@@ -48,10 +40,6 @@ public class RailProp extends Properties{
                 listP.get(trueOwner).addMoney(currentRent);//Collect Rent money
             }
         }
-
-=======
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
->>>>>>> GUI
     }
-    
+
 }
