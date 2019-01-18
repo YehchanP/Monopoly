@@ -21,4 +21,10 @@ public abstract class Tiles {
     }
     
     abstract void event(Player p, ArrayList<Player> listP);
+
+    public String getName() {
+        return name;
+    }
+    
+    
 }
