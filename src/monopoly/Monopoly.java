@@ -54,7 +54,7 @@ public class Monopoly {
         while (!response.equalsIgnoreCase("save")) {//Game plays while no one says yes at the end of their turn
 
             do {//Rolls either the first time or doubles
-                
+
                 if(!p.get(currentP).isInJail()) {//If they aren't in Jail, roll normally
                     do {//Force to roll
                         System.out.println("Type 'roll' to roll, " + p.get(currentP).getName());
@@ -71,7 +71,7 @@ public class Monopoly {
                         p.get(currentP).leaveJail();
                     }
                 }
-                
+
                 userDice1 = rng.nextInt(6) + 1;//Rolls dice
                 userDice2 = rng.nextInt(6) + 1;
 
@@ -85,7 +85,7 @@ public class Monopoly {
                             System.out.println("DOUBLES");
                             doub = true;
                         } else {//If they have 3 doubles it loads the jail event
-                            doub = false;                                                    
+                            doub = false;
                             doubleCount = 0;
                             p.get(currentP).toJail();
                             System.out.println(p.get(currentP).getName() + " is now at " + tiles[p.get(currentP).getSpace()]);
@@ -105,10 +105,10 @@ public class Monopoly {
                     movement(roll, p.get(currentP));
                     System.out.println(p.get(currentP).getName() + " is now at " + tiles[p.get(currentP).getSpace()]);
                 }
-                
+
                 System.out.println(p.get(currentP).getName()+" has $"+p.get(currentP).getMoney());
-                
-                
+
+
                 System.out.println("Type 'save' to quit");
                 if (!doub) {
                     System.out.println("Type anything else to pass the turn");
