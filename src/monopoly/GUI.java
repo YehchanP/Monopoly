@@ -214,7 +214,6 @@ public class GUI extends Application implements EventHandler{
     //Method for handling button and any events
     @Override
     public void handle(Event event) {
-        counter = 0;
         if(event.getSource() == startBtn){
             numPlayersScene(window);
 
@@ -255,7 +254,7 @@ public class GUI extends Application implements EventHandler{
             counter2 += 1;
             if (counter2 < numPlayers) {
                 tokenSelectionScene(window);
-            } else if (counter == numPlayers) {
+            } else if (counter2 == numPlayers) {
                 titleScene(window);
             }
         } else if (event.getSource() == horseBtn) {
@@ -263,7 +262,7 @@ public class GUI extends Application implements EventHandler{
             counter2 += 1;
             if (counter2 < numPlayers) {
                 tokenSelectionScene(window);
-            } else if (counter == numPlayers) {
+            } else if (counter2 == numPlayers) {
                 titleScene(window);
             }
         } else if (event.getSource() == planeBtn) {
@@ -271,7 +270,7 @@ public class GUI extends Application implements EventHandler{
             counter2 += 1;
             if (counter2 < numPlayers) {
                 tokenSelectionScene(window);
-            } else if (counter == numPlayers) {
+            } else if (counter2 == numPlayers) {
                 titleScene(window);
             }
         } else if (event.getSource() == penguinBtn) {
@@ -279,7 +278,7 @@ public class GUI extends Application implements EventHandler{
             counter2 += 1;
             if (counter2 < numPlayers) {
                 tokenSelectionScene(window);
-            } else if (counter == numPlayers) {
+            } else if (counter2 == numPlayers) {
                 titleScene(window);
             }
         } else if (event.getSource() == scottTerrBtn) {
@@ -287,7 +286,7 @@ public class GUI extends Application implements EventHandler{
             counter2 += 1;
             if (counter2 < numPlayers) {
                 tokenSelectionScene(window);
-            } else if (counter == numPlayers) {
+            } else if (counter2 == numPlayers) {
                 titleScene(window);
             }
         } else if (event.getSource() == shipBtn) {
@@ -295,7 +294,7 @@ public class GUI extends Application implements EventHandler{
             counter2 += 1;
             if (counter2 < numPlayers) {
                 tokenSelectionScene(window);
-            } else if (counter == numPlayers) {
+            } else if (counter2 == numPlayers) {
                 titleScene(window);
             }
         }
