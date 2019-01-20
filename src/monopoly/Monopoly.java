@@ -32,6 +32,7 @@ public class Monopoly {
         int userDice2 = 0;
         int roll = 0;
         String response = "s";
+        String confirm;
         for (int i = 0; i < 40; i++) {
             board.add(null);
         }
@@ -70,7 +71,7 @@ public class Monopoly {
                         System.out.println("Or type 'pay' to pay to get out of jail");
                         rolling = in.next();
                     } while (!rolling.equalsIgnoreCase("roll") && !rolling.equalsIgnoreCase("pay"));
-                    if (rolling.equalsIgnoreCase("pay") || p.get(currentP).getTurnsInJail() == 3) {//Technically against the rules but the code becomes easier and a very rare case that it does not work. You would need to be in jail and lose (5/6) three times and be bankrupt
+                    if (rolling.equalsIgnoreCase("pay") || p.get(currentP).getTurnsInJail() == 3) {
                         p.get(currentP).loseMoney(50);
                         p.get(currentP).leaveJail();
                     }
@@ -112,21 +113,70 @@ public class Monopoly {
                 }
 
                 System.out.println(p.get(currentP).getName() + " has $" + p.get(currentP).getMoney());
-
+                for (int i = 0; i < p.get(currentP).getOwn().size(); i++) {
+                    System.out.println(p.get(currentP).getOwn().get(i).getPosition()+" "+p.get(currentP).getOwn().get(i).getName());
+                }
+                System.out.println("Type 'manage' to manage properties");
                 System.out.println("Type 'save' to quit");
                 if (!doub) {
-                    System.out.println("Type anything else to pass the turn");
-                    currentP++;
-                    if (currentP >= p.size()) {
-                        currentP = 0;
-                    }
+                    System.out.println("Type anything to pass the turn");    
                 } else {
                     System.out.println("Type anything else to roll again");
                 }
                 response = in.next();
-
+                if (response.equalsIgnoreCase("save")) {
+                    break;
+                }else if (response.equalsIgnoreCase("manage")){
+                    System.out.println("Please enter the index of the property you want to manage");
+                    int search = Integer.parseInt(in.next());
+                    int posSearch = 0;
+                    boolean found = false;
+                    for (int i = 0; i < p.get(currentP).getOwn().size(); i++) {
+                        if(p.get(currentP).getOwn().get(i).getPosition()==search){
+                            found = true;
+                            posSearch = i;
+                            break;
+                        }
+                    }
+                    if(found){
+                        if(p.get(currentP).getOwn().get(posSearch).monopoly){
+                            System.out.println("Would you like to buy a house/hotel(h), or mortgage/unmortgage your property(m)?");
+                            String man = in.nextLine();
+                            if(Character.toLowerCase(man.charAt(0))=='m'){
+                                if(p.get(currentP).getOwn().get(posSearch).isMortgage()){
+                                    System.out.println("Would you like to unmortgage for $"+((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost()/2*1.1)));
+                                    /*
+                                    Unmortgage is 110% of the mortgage value which is half of the title deed value.
+                                    In the case for Park Place, the unmortgage cost for that formula would be 192.5 so this should be rounded up, however due to the nature
+                                    Of math in java, some occasions the formula will output a decimal of 10^-14 which would make suppposedly even number round up
+                                    Due to this, we opted to round down for all mortgage values. This does solve the case for more properties but leaves the issue of a
+                                    $1 discount for Park place
+                                    */
+                                    confirm = in.nextLine();
+                                    if(confirm.equalsIgnoreCase("yes")){
+                                        p.get(currentP).getOwn().get(posSearch).setMortgage(false);
+                                        p.get(currentP).loseMoney((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost()/2*1.1));
+                                    }
+                                }else{
+                                    System.out.println("Would you like to mortgage and recieve $"+((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost()/2)));
+                                    confirm = in.nextLine();
+                                    if(confirm.equalsIgnoreCase("yes")){
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }else{
+                        
+                    }
+                }
                 System.out.println("\n\n\n\n");
+                currentP++;
+                    if (currentP >= p.size()) {
+                        currentP = 0;
+                    }
             } while (doub);
+
         }
     }
 
@@ -256,7 +306,7 @@ public class Monopoly {
                 } else if (pos <= 37) {
                     temp = new HouseProp(line, pos, 350, 2, "dark blue", 35, 175, 500, 1100, 1300, 1500, 200);
                 } else if (pos <= 39) {
-                    temp = new HouseProp(line, pos, 350, 2, "dark blue", 35, 175, 500, 1100, 1300, 1500, 200);
+                    temp = new HouseProp(line, pos, 400, 2, "dark blue", 50, 200, 600, 1400, 1700, 2000, 200);
                 }
                 board.set(temp.getPosition(), temp);
                 String lineTemp = BR.readLine();

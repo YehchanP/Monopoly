@@ -47,11 +47,11 @@ public class HouseProp extends Properties{
     @Override
     void event(Player p, ArrayList<Player> listP) {
         if(this.owner<0){
-            System.out.println("Would you like to purchase "+this.getName()+" for $"+this.cost);
+            System.out.println("Would you like to purchase "+this.getName()+" for $"+this.getCost());
             System.out.println("Your current balance is $"+p.getMoney());
             String response = in.nextLine();
             if(response.equalsIgnoreCase("yes")){
-                p.loseMoney(this.cost);
+                p.loseMoney(this.getCost());
                 owner = p.getPlayerNumber();
             }
         }else{
