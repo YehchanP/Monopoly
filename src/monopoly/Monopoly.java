@@ -30,6 +30,7 @@ public class Monopoly {
         Random rng = new Random();
         int userDice1 = 0;
         int userDice2 = 0;
+        int search = -1;
         int roll = 0;
         String response = "s";
         String confirm;
@@ -128,13 +129,13 @@ public class Monopoly {
                 if (response.equalsIgnoreCase("save")) {
                     break;
                 } else if (response.equalsIgnoreCase("manage")) {
-                    
+                    do{
                     for (int i = 0; i < p.get(currentP).getOwn().size(); i++) {
                         System.out.println(p.get(currentP).getOwn().get(i).getPosition() + " " + p.get(currentP).getOwn().get(i).getName());
                     }
 
                     System.out.println("Please enter the index of the property you want to manage (put in -1 to quit)");
-                    int search = Integer.parseInt(in.next());
+                    search = Integer.parseInt(in.next());
                     if(search == 1){
                         break;
                     }
@@ -227,8 +228,11 @@ public class Monopoly {
                             }
                         }
                     } else {
-                        System.out.println("Could not find property");
-                    }
+                            System.out.println("Could not find property");
+                        }
+
+                    }while(search!=-1);
+                
                 }
                 System.out.println("\n\n\n\n");
                 currentP++;

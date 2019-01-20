@@ -113,10 +113,17 @@ public class Player {
 
     public void addProp(Properties prop) {
         this.own.add(prop);
+        
+        //Updating amount owned by that player
         int amountOwn = 0;
         for (int i = 0; i < this.getOwn().size(); i++) {
             if (this.getOwn().get(i).getColour() == prop.getColour()) {
                 amountOwn++;
+            }
+        }
+        for (int i = 0; i < this.getOwn().size(); i++) {
+            if (this.getOwn().get(i).getColour() == prop.getColour()) {
+                prop.amountOwned=amountOwn;
             }
         }
         if (amountOwn == prop.getTotalAmount()) {
@@ -126,6 +133,20 @@ public class Player {
                 }
             }
         }
+        for (int i = 0; i < own.size(); i++) {
+            for (int j = 0; j < own.size() - i; j++) {
+                if ((j + 1) < own.size() && own.get(j).getPosition() > own.get(j + 1).getPosition()) {
+                    
+                    Properties temp = own.get(j);
+                    
+                    own.set(j, own.get(j + 1));
+                    
+                    own.set(j + 1, temp);
+                }
+            }
+        }
+        
+        
     }
 
     public void removeProp(int pos) {

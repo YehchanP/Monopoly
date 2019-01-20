@@ -45,6 +45,7 @@ public class RailProp extends Properties{
                     }
                 }
                 int currentRent = 0;
+                
                 currentRent = rent[this.amountOwned];
                 p.loseMoney(currentRent);//Steal money for rent
 

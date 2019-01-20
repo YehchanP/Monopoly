@@ -40,7 +40,6 @@ public class HouseProp extends Properties{
     public int getAmountOfHouses() {
         return amountOfHouses;
     }
-    
     public void buyHouse(int amt) {
         this.amountOfHouses+= amt;
     }

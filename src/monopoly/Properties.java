@@ -5,11 +5,13 @@
  */
 package monopoly;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 324745561
  */
-public abstract class Properties extends Tiles{
+public class Properties extends Tiles{
 
     private int cost;
     public int amountOwned = 0;
@@ -46,6 +48,10 @@ public abstract class Properties extends Tiles{
 
     public void setMortgage(boolean mortgage) {
         this.mortgage = mortgage;
+    }
+
+    @Override
+    void event(Player p, ArrayList<Player> listP) {
     }
 
     
