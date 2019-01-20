@@ -161,7 +161,8 @@ public class Monopoly {
                                     System.out.println("Would you like to mortgage and recieve $"+((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost()/2)));
                                     confirm = in.nextLine();
                                     if(confirm.equalsIgnoreCase("yes")){
-                                        
+                                        p.get(currentP).getOwn().get(posSearch).setMortgage(true);
+                                        p.get(currentP).addMoney((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost()/2));
                                     }
                                 }
                             }
