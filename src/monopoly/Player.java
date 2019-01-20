@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package monopoly;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author 324745561
- */
 public class Player {
 
     private int space = 0;
@@ -117,18 +108,18 @@ public class Player {
         //Updating amount owned by that player
         int amountOwn = 0;
         for (int i = 0; i < this.getOwn().size(); i++) {
-            if (this.getOwn().get(i).getColour() == prop.getColour()) {
+            if (this.getOwn().get(i).getColour().equals(prop.getColour())) {
                 amountOwn++;
             }
         }
         for (int i = 0; i < this.getOwn().size(); i++) {
-            if (this.getOwn().get(i).getColour() == prop.getColour()) {
+            if (this.getOwn().get(i).getColour().equals(prop.getColour())) {
                 prop.amountOwned=amountOwn;
             }
         }
         if (amountOwn == prop.getTotalAmount()) {
             for (int i = 0; i < this.getOwn().size(); i++) {
-                if (this.getOwn().get(i).getColour() == prop.getColour()) {
+                if (this.getOwn().get(i).getColour().equals(prop.getColour())) {
                     this.getOwn().get(i).monopoly = true;
                 }
             }

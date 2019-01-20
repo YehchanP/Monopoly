@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package monopoly;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author 324745561
- */
 public class Properties extends Tiles{
 
     private int cost;
@@ -39,8 +30,6 @@ public class Properties extends Tiles{
     public int getTotalAmount() {
         return totalAmount;
     }
-    
-    
 
     public boolean isMortgage() {
         return mortgage;
