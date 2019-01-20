@@ -16,14 +16,12 @@ import javafx.scene.text.*;
 
 public class GUI extends Application implements EventHandler{
 
-    private Player temp = new Player(".","..");
-
+    //Variable declarations
     private Scene previousScene;
 
     private Stage window;
 
     private Button startBtn, loadBtn, twoPlayers, threePlayers, fourPlayers, back, playerName;
-
     private Button carBtn, horseBtn, planeBtn, penguinBtn, scottTerrBtn, shipBtn;
 
     private TextField pName;
@@ -37,12 +35,15 @@ public class GUI extends Application implements EventHandler{
     private final Image ship = new Image("file:ship.png");
 
     private int counter, numPlayers, counter2;
+    
     private String tempName,tempToken;
 
     public ArrayList<Player> players = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) {
+        
+        //Saves the stage so that it could be used as the stage in other scene method's parameters
         window = primaryStage;
 
         //Creates and displays the scene and stage
@@ -53,6 +54,7 @@ public class GUI extends Application implements EventHandler{
         titleScene(primaryStage);
     }
 
+    //Method for creating the title page scene
     public void titleScene(Stage primaryStage) {
 
         StackPane root = new StackPane();
@@ -141,36 +143,45 @@ public class GUI extends Application implements EventHandler{
 
     //Method for character creation GUI
     public void playerCreationScene(Stage primaryStage){
+        
         StackPane root = new StackPane();
 
         Scene playerCreationPage = new Scene(root, 1000, 750);
 
         Text txt1 = new Text ("Player " + (counter + 1) + " Name:");
 
+        //txt1 properties & modifications
         txt1.setStyle("-fx-font-size: 30px; ");
         txt1.setTranslateY(-100);
 
+        //pName initialization and modifications
         pName = new TextField();
         pName.setStyle("-fx-font-size: 20px; ");
         pName.setMaxSize(400, 20);
 
+        //playerName Button initialization and modifications
         playerName = new Button();
         playerName.setText("Enter");
         playerName.setOnAction(this);
         playerName.setStyle("-fx-font-size: 20px; ");
         playerName.setTranslateX(270);
 
+        //Temporarily saves the name from the textfield to use for a player object 
         tempName = pName.getText();
 
+        //Adds JavaFX nodes/elements to the StackPane
         root.getChildren().addAll(txt1, pName, playerName);
 
+        //Displays the scene
         primaryStage.setScene(playerCreationPage);
     }
 
+    //Method for making the token selection page
     public void tokenSelectionScene(Stage primaryStage) {
 
         StackPane root = new StackPane();
 
+        //Creation and modifications for FlowPane
         FlowPane pane = new FlowPane();
         pane.setHgap(30);
         pane.setVgap(30);
@@ -300,7 +311,6 @@ public class GUI extends Application implements EventHandler{
         }
     }
 
-    //carBtn, horseBtn, lampBtn, planeBtn, penguinBtn, scottTerrBtn, shipBtn, wheelBarrowBtn
     public static void main(String[] args) {
         launch(args);
     }
