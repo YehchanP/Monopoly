@@ -36,12 +36,17 @@ public class HouseProp extends Properties{
     public int getHouseCost() {
         return houseCost;
     }
+
+    public int getAmountOfHouses() {
+        return amountOfHouses;
+    }
     
-    public void buyHouse(Player p) {
-        if (this.monopoly) {
-            p.loseMoney(houseCost);
-            this.amountOfHouses++;
-        }
+    public void buyHouse(int amt) {
+        this.amountOfHouses+= amt;
+    }
+    
+    public void sellHouse(int amt) {
+        this.amountOfHouses-= amt;
     }
     
     @Override
