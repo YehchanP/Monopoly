@@ -16,8 +16,6 @@ import javafx.scene.text.*;
 
 public class GUI extends Application implements EventHandler{
 
-    private Player temp = new Player(".","..");
-
     private Scene previousScene;
 
     private Stage window;
@@ -211,6 +209,15 @@ public class GUI extends Application implements EventHandler{
         primaryStage.setScene(tokenSelection);
     }
 
+    public void boardScene (Stage primaryStage){
+        
+        StackPane root = new StackPane();
+        
+        Scene boardScene = new Scene(root, 1000, 700);
+        
+        primaryStage.setScene(previousScene);
+    }
+    
     //Method for handling button and any events
     @Override
     public void handle(Event event) {
@@ -300,7 +307,6 @@ public class GUI extends Application implements EventHandler{
         }
     }
 
-    //carBtn, horseBtn, lampBtn, planeBtn, penguinBtn, scottTerrBtn, shipBtn, wheelBarrowBtn
     public static void main(String[] args) {
         launch(args);
     }
