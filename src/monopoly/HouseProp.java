@@ -56,10 +56,11 @@ public class HouseProp extends Properties{
             String response = in.nextLine();
             if(response.equalsIgnoreCase("yes")){
                 p.loseMoney(this.getCost());
+                p.addProp(this);
                 owner = p.getPlayerNumber();
             }
         }else{
-            if(owner != p.getPlayerNumber()){//If the current player does not own the owned property
+            if(owner != p.getPlayerNumber()&&!this.isMortgage()){//If the current player does not own the owned property
                 
                 int trueOwner = 0;//Finding the real owner
                 for (int i = 0; i < listP.size(); i++) {

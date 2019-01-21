@@ -25,6 +25,7 @@ public class Monopoly {
         int roll = 0;
         String response = "s";
         String confirm;
+        String man = "";
         int wantedHouses = 0;
         for (int i = 0; i < 40; i++) {
             board.add(null);
@@ -142,7 +143,7 @@ public class Monopoly {
                     if (found) {
                         if (p.get(currentP).getOwn().get(posSearch).monopoly && p.get(currentP).getOwn().get(posSearch) instanceof HouseProp) {
                             System.out.println("Would you like to buy a house/hotel(h), or mortgage/unmortgage your property(m)?");
-                            String man = in.nextLine();
+                            man = in.next();
                             if (Character.toLowerCase(man.charAt(0)) == 'm') {
                                 if (p.get(currentP).getOwn().get(posSearch).isMortgage()) {
                                     System.out.println("Would you like to unmortgage for $" + ((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost() / 2 * 1.1)));
@@ -153,14 +154,14 @@ public class Monopoly {
                                     Due to this, we opted to round down for all mortgage values. This does solve the case for more properties but leaves the issue of a
                                     $1 discount for Park place
                                      */
-                                    confirm = in.nextLine();
+                                    confirm = in.next();
                                     if (confirm.equalsIgnoreCase("yes")) {
                                         p.get(currentP).getOwn().get(posSearch).setMortgage(false);
                                         p.get(currentP).loseMoney((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost() / 2 * 1.1));
                                     }
                                 } else {
                                     System.out.println("Would you like to mortgage and recieve $" + ((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost() / 2)));
-                                    confirm = in.nextLine();
+                                    confirm = in.next();
                                     if (confirm.equalsIgnoreCase("yes")) {
                                         p.get(currentP).getOwn().get(posSearch).setMortgage(true);
                                         p.get(currentP).addMoney((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost() / 2));
@@ -168,17 +169,17 @@ public class Monopoly {
                                 }
                             } else if (Character.toLowerCase(man.charAt(0)) == 'h') {
                                 System.out.println("Would you like to buy or sell a house");
-                                confirm = in.nextLine();
+                                confirm = in.next();
                                 if (confirm.equalsIgnoreCase("buy")) {
                                     System.out.println("How many? Each house is $" + ((HouseProp) p.get(currentP).getOwn().get(posSearch)).getHouseCost());
-                                    wantedHouses = Integer.parseInt(in.nextLine());
+                                    wantedHouses = Integer.parseInt(in.next());
                                     p.get(currentP).loseMoney(((HouseProp) p.get(currentP).getOwn().get(posSearch)).getHouseCost());
                                     ((HouseProp) p.get(currentP).getOwn().get(posSearch)).buyHouse(wantedHouses);
                                 } else if (confirm.equalsIgnoreCase("sell")) {
                                     boolean sellCorrect = false;
                                     do {
                                         System.out.println("How many? You will recieve $" + ((((HouseProp) p.get(currentP).getOwn().get(posSearch)).getHouseCost()) / 2));
-                                        wantedHouses = Integer.parseInt(in.nextLine());
+                                        wantedHouses = Integer.parseInt(in.next());
                                         if (wantedHouses < ((HouseProp) p.get(currentP).getOwn().get(posSearch)).getAmountOfHouses()) {
                                             sellCorrect = true;
                                         } else {
@@ -192,7 +193,7 @@ public class Monopoly {
                             }
                         } else{
                             System.out.println("Would you like to mortgage/unmortgage your property (m)?");
-                            String man = in.nextLine();
+                            man = in.next();
                             if (Character.toLowerCase(man.charAt(0)) == 'm') {
                                 if (p.get(currentP).getOwn().get(posSearch).isMortgage()) {
                                     System.out.println("Would you like to unmortgage for $" + ((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost() / 2 * 1.1)));
@@ -203,14 +204,14 @@ public class Monopoly {
                                     Due to this, we opted to round down for all mortgage values. This does solve the case for more properties but leaves the issue of a
                                     $1 discount for Park place
                                      */
-                                    confirm = in.nextLine();
+                                    confirm = in.next();
                                     if (confirm.equalsIgnoreCase("yes")) {
                                         p.get(currentP).getOwn().get(posSearch).setMortgage(false);
                                         p.get(currentP).loseMoney((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost() / 2 * 1.1));
                                     }
                                 } else {
                                     System.out.println("Would you like to mortgage and recieve $" + ((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost() / 2)));
-                                    confirm = in.nextLine();
+                                    confirm = in.next();
                                     if (confirm.equalsIgnoreCase("yes")) {
                                         p.get(currentP).getOwn().get(posSearch).setMortgage(true);
                                         p.get(currentP).addMoney((int) Math.floor(p.get(currentP).getOwn().get(posSearch).getCost() / 2));
@@ -222,13 +223,15 @@ public class Monopoly {
                             System.out.println("Could not find property");
                         }
 
-                    }while(search!=-1);
-                
+                    } while (search != -1);
+
                 }
                 System.out.println("\n\n\n\n");
-                currentP++;
-                if (currentP >= p.size()) {
-                    currentP = 0;
+                if (!doub) {
+                    currentP++;
+                    if (currentP >= p.size()) {
+                        currentP = 0;
+                    }
                 }
             } while (doub);
 
