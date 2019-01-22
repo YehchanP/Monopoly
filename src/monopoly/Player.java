@@ -5,6 +5,7 @@
  */
 package monopoly;
 import java.util.ArrayList;
+import javafx.scene.image.Image;
 /**
  *
  * @author 324745561
@@ -13,14 +14,14 @@ public class Player {
     private int space = 0;
     private int money = 1500;
     private String name;
-    private String token;
+    private Image token;
     private boolean inJail = false;
     private int turnsInJail = 0;
     private ArrayList<Properties> own = new ArrayList<>();
     private int playerNumber;//This is going to be used for ownership
     private static int amountOfPlayers = 0;
     
-    public Player(String name, String token) {
+    public Player(String name, Image token) {
         this.name = name;
         this.token = token;
         amountOfPlayers++;
@@ -39,7 +40,7 @@ public class Player {
         return name;
     }
 
-    public String getToken() {
+    public Image getToken() {
         return token;
     }
 
@@ -78,7 +79,7 @@ public class Player {
         this.name = name;
     }
 
-    public void setToken(String token) {
+    public void setToken(Image token) {
         this.token = token;
     }
     
